@@ -1,5 +1,8 @@
 package Huffman;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public class TreeNode {
 
     public int value;
@@ -54,8 +57,7 @@ public class TreeNode {
         return maxDepth(this);
     }
 
-    private int maxDepth(TreeNode node)
-    {
+    private int maxDepth(TreeNode node) {
         if (node == null)
             return 0;
         else
@@ -70,12 +72,24 @@ public class TreeNode {
         }
     }
 
+    public int[][] toIntArray(){
+
+        ArrayList<ArrayList<Integer>> ansArrayList = new ArrayList<ArrayList<Integer>>();
+        for(int i = 0; i < maxDepth(); i++){
+
+            //TODO: Finish later
+
+        }
+
+        return new int[0][];
+    }
 
     @Override
     public String toString(){
         StringBuilder answer = new StringBuilder();
 
-        //TODO: Implement method to print binary tree
+        String[] levels = new String[maxDepth()];
+        //TODO: Implement method to print binary tree using toIntArray()
 
         return answer.toString();
     }
