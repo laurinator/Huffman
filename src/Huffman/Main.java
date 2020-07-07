@@ -14,6 +14,9 @@ public class Main {
         System.out.println();
 
         PairHandler pairHandler = new PairHandler();
+        //pairHandler.populate();
+
+
         pairHandler.addText(inputText);
         System.out.println("FINAL TABLE");
         pairHandler.printTable();

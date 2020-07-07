@@ -19,13 +19,13 @@ public class PairHandler {
 
     }
 
-    public void addLetter(char letter){
+    public void populate(){
+        for (int i = 0; i < 200; i++){
+            list.add(new LetterCountPair((char)i, 0));
+        }
+    }
 
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println("NEW TABLE, active letter: " + letter);
-        printTable();
+    public void addLetter(char letter){
 
         if(list.size() == 0){
             list.add(new LetterCountPair(letter, 1));
@@ -33,32 +33,25 @@ public class PairHandler {
         }
 
         if(letter < list.get(0).getLetter()){
-            System.out.println("Catch, letter is \"" + letter + "\"");
-            System.out.println((int)list.get(0).getLetter() + " " + (int)letter);
-
             list.add(0, new LetterCountPair(letter, 1));
             return;
         }
 
-        for(int i = 0; i < list.size(); i++){
-            System.out.println("Next comparison: " + (int)list.get(i).getLetter() + " < " + (int)letter);
-            if(list.get(i).getLetter() == letter){
-                System.out.println("success453tz45b065496bunß425b6790ubb67n");
-                list.get(i).addToCount();
+        for (LetterCountPair letterCountPair : list) {
+            if (letterCountPair.getLetter() == letter) {
+                letterCountPair.addToCount();
                 return;
-            } else {
-                if (list.get(i).getLetter() > letter) {
-                    System.out.println("New letter not at the beginning found");
-                    //letter not in list, create new entry
-                    LetterCountPair newEntry = new LetterCountPair(letter, 1);
-                    list.add(i, newEntry);
-                    return;
-                } else {
-                    System.out.println("Not new, but also not added------------------------------");
-                }
             }
         }
-        System.out.println("should be unreachable");
+
+        //add new entry
+        int index = 0;
+        for(int i = 0; i < list.size(); i++){
+            if(letter > list.get(i).getLetter()){
+                index = i;
+            }
+        }
+        list.add(index, new LetterCountPair(letter, 1));
 
     }
 
