@@ -63,4 +63,15 @@ public class PairHandler {
 
     }
 
+    public ArrayList<TreeNode> toTreeNodes(){
+
+        ArrayList<TreeNode> ans = new ArrayList<TreeNode>();
+
+        for(LetterCountPair letterCountPair : list){
+            ans.add(new TreeNode(letterCountPair.getNumber(), letterCountPair.getLetter()));
+        }
+
+        return ans;
+    }
+
 }

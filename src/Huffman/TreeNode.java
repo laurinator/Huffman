@@ -6,15 +6,22 @@ import java.util.ArrayList;
 public class TreeNode {
 
     public int value;
+    public char character;
     public TreeNode left;
     public TreeNode right;
 
     public TreeNode(int value){
 
         this.value = value;
+        character = 0;
         left = null;
         right = null;
 
+    }
+
+    public TreeNode(int value, char character){
+        this.character = character;
+        this.value = value;
     }
 
     public TreeNode(int value, TreeNode left, TreeNode right){
