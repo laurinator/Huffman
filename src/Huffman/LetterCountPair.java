@@ -2,10 +2,10 @@ package Huffman;
 
 public class LetterCountPair {
 
-    private String letter;
+    private char letter;
     private int count;
 
-    public  LetterCountPair(String letter, int count){
+    public  LetterCountPair(char letter, int count){
         this.letter = letter;
         this.count = count;
     }
@@ -14,11 +14,16 @@ public class LetterCountPair {
         return count;
     }
 
-    public String getLetter() {
+    public char getLetter() {
         return letter;
     }
 
     public void addToCount(){
         count++;
+    }
+
+    @Override
+    public String toString(){
+        return letter + "(" + (int)letter + ")" + " : " + count;
     }
 }
