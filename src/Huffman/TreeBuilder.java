@@ -4,15 +4,38 @@ import java.util.ArrayList;
 
 public class TreeBuilder {
 
-    public static TreeNode buildHuffmanTree(ArrayList<TreeNode> list){
-        //TODO: finish
-        while(list.size() > 2){
+    private TreeNode tree;
 
+    public void buildHuffmanTree(ArrayList<TreeNode> list){
+
+        while(list.size() > 2){
+            int indexSmallest = findIndexOfSmallestValue(list);
+            TreeNode smallest = list.get(indexSmallest);
+            list.remove(indexSmallest);
+
+            int indexSecondSmallest = findIndexOfSmallestValue(list);
+            TreeNode secondSmallest = list.get(indexSecondSmallest);
+            list.remove(indexSecondSmallest);
+
+            TreeNode newNode = new TreeNode((smallest.value + secondSmallest.value), secondSmallest, smallest);
+            newNode.character = (char) 45;
+            list.add(newNode);
         }
-        return null;
+
+        if(list.get(0).value > list.get(1).value){
+            tree = new TreeNode(list.get(0).value + list.get(1).value, list.get(0), list.get(1));
+        } else {
+            tree = new TreeNode(list.get(0).value + list.get(1).value, list.get(1), list.get(0));
+        }
+        tree.character = (char) 45;
+
     }
 
-    public static int findIndexOfSmallestValue(ArrayList<TreeNode> list){
+    public TreeNode getTree() {
+        return tree;
+    }
+
+    public int findIndexOfSmallestValue(ArrayList<TreeNode> list){
 
         int lowest = Integer.MAX_VALUE;
         int indexOfLowest = -1;
@@ -24,18 +47,37 @@ public class TreeBuilder {
                 indexOfLowest = i;
             }
         }
+
+        ArrayList<TreeNode> draws = new ArrayList<TreeNode>();
+        ArrayList<Integer> depths = new ArrayList<Integer>();
+        ArrayList<Integer> indexes = new ArrayList<Integer>();
+
+        for(int i = 0; i < list.size(); i++){
+            if(list.get(i).value == lowest){
+                draws.add(list.get(i));
+                depths.add(list.get(i).maxDepth());
+                indexes.add(i);
+            }
+        }
+
+        if(draws.size() > 1) {
+
+            int lowestDepth = Integer.MAX_VALUE;
+            int indexOfLowestDepth = 0;
+
+            for(int i = 0; i < draws.size(); i++){
+                if(depths.get(i) < lowestDepth){
+                    lowestDepth = depths.get(i);
+                    indexOfLowestDepth = i;
+                }
+            }
+
+            return indexes.get(indexOfLowestDepth);
+        }
+
+
         return indexOfLowest;
 
-    }
-
-    public static int findIndexOfSecondSmallestValue(ArrayList<TreeNode> list){
-        int index = findIndexOfSmallestValue(list);
-        TreeNode temp = list.get(index);
-        list.remove(index);
-
-        int returnIndex = findIndexOfSmallestValue(list);
-        list.add(temp);
-        return returnIndex;
     }
 
 }
