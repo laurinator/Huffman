@@ -62,17 +62,17 @@ public class TreeBuilder {
 
         if(draws.size() > 1) {
 
-            int lowestDepth = Integer.MAX_VALUE;
-            int indexOfLowestDepth = 0;
+            int highestDepth = Integer.MIN_VALUE;
+            int indexOfHighestDepth = 0;
 
             for(int i = 0; i < draws.size(); i++){
-                if(depths.get(i) < lowestDepth){
-                    lowestDepth = depths.get(i);
-                    indexOfLowestDepth = i;
+                if(depths.get(i) > highestDepth){
+                    highestDepth = depths.get(i);
+                    indexOfHighestDepth = i;
                 }
             }
 
-            return indexes.get(indexOfLowestDepth);
+            return indexes.get(indexOfHighestDepth);
         }
 
 
