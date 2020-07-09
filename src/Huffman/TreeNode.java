@@ -79,25 +79,19 @@ public class TreeNode {
         }
     }
 
-    public int[][] toIntArray(){
-
-        ArrayList<ArrayList<Integer>> ansArrayList = new ArrayList<ArrayList<Integer>>();
-        for(int i = 0; i < maxDepth(); i++){
-
-            //TODO: Finish later
-
+    public StringBuilder toString(StringBuilder prefix, boolean isTail, StringBuilder sb) {
+        if(right!=null) {
+            right.toString(new StringBuilder().append(prefix).append(isTail ? "│   " : "    "), false, sb);
         }
-
-        return new int[0][];
+        sb.append(prefix).append(isTail ? "└── " : "┌── ").append(value).append(" : ").append(character).append("\n");
+        if(left!=null) {
+            left.toString(new StringBuilder().append(prefix).append(isTail ? "    " : "│   "), true, sb);
+        }
+        return sb;
     }
 
     @Override
-    public String toString(){
-        StringBuilder answer = new StringBuilder();
-
-        String[] levels = new String[maxDepth()];
-        //TODO: Implement method to print binary tree using toIntArray()
-
-        return answer.toString();
+    public String toString() {
+        return this.toString(new StringBuilder(), true, new StringBuilder()).toString();
     }
 }
