@@ -6,6 +6,12 @@ public class TreeBuilder {
 
     private TreeNode tree;
 
+    public void buildHuffmanTree(String text){
+        PairHandler pairHandler = new PairHandler();
+        pairHandler.addText(text);
+        buildHuffmanTree(pairHandler.toTreeNodes());
+    }
+
     public void buildHuffmanTree(ArrayList<TreeNode> list){
 
         while(list.size() > 2){
