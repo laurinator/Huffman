@@ -5,6 +5,12 @@ import java.util.ArrayList;
 public class TreeBuilder {
 
     private TreeNode tree;
+    private EncodingTable table;
+
+    public void buildTable(){
+        table = new EncodingTable();
+        table.builFromTree(tree);
+    }
 
     public void buildHuffmanTree(String text){
         PairHandler pairHandler = new PairHandler();
