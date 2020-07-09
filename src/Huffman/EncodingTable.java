@@ -6,7 +6,7 @@ public class EncodingTable {
 
     private ArrayList<Entry> entries = new ArrayList<Entry>();
 
-    public void builFromTree(TreeNode tree) {
+    public void buildFromTree(TreeNode tree) {
         //TODO: implement
     }
 

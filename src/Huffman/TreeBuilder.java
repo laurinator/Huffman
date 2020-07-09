@@ -9,7 +9,7 @@ public class TreeBuilder {
 
     public void buildTable(){
         table = new EncodingTable();
-        table.builFromTree(tree);
+        table.buildFromTree(tree);
     }
 
     public void buildHuffmanTree(String text){
