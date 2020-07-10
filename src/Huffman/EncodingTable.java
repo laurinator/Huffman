@@ -8,6 +8,12 @@ public class EncodingTable {
 
     public void buildFromTree(TreeNode tree) {
         //TODO: implement
+
+    }
+
+    public TreeNode[] traverse(TreeNode topNode){
+        //TODO: implement
+        return new TreeNode[0];
     }
 
     private class Entry{
